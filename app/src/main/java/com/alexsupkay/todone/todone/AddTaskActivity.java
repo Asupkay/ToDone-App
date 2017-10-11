@@ -3,13 +3,16 @@ package com.alexsupkay.todone.todone;
 import android.content.ContentValues;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
+import com.alexsupkay.todone.todone.Fragments.DatePickerFragment;
 import com.alexsupkay.todone.todone.data.TaskContract;
+import com.alexsupkay.todone.todone.data.TaskContract.TaskEntry;
 
 
 public class AddTaskActivity extends AppCompatActivity {
@@ -45,10 +48,10 @@ public class AddTaskActivity extends AppCompatActivity {
         // Create new empty ContentValues object
         ContentValues contentValues = new ContentValues();
         // Put the task description and selected mPriority into the ContentValues
-        contentValues.put(TaskContract.TaskEntry.COLUMN_DESCRIPTION, input);
-        contentValues.put(TaskContract.TaskEntry.COLUMN_PRIORITY, mPriority);
+        contentValues.put(TaskEntry.COLUMN_DESCRIPTION, input);
+        contentValues.put(TaskEntry.COLUMN_PRIORITY, mPriority);
         // Insert the content values via a ContentResolver
-        Uri uri = getContentResolver().insert(TaskContract.TaskEntry.CONTENT_URI, contentValues);
+        Uri uri = getContentResolver().insert(TaskEntry.CONTENT_URI, contentValues);
 
         // Display the URI that's returned with a Toast
         // [Hint] Don't forget to call finish() to return to MainActivity after this insert is complete
@@ -58,6 +61,19 @@ public class AddTaskActivity extends AppCompatActivity {
 
         // Finish activity (this returns back to MainActivity)
         finish();
+
+    }
+
+    public void showDatePickerDialog(View v) {
+        DialogFragment newFragment = new DatePickerFragment();
+        newFragment.show(getSupportFragmentManager(), "datePicker");
+    }
+
+    public String getDateText() {
+        return "";
+    }
+
+    public void setDateText(String date) {
 
     }
 

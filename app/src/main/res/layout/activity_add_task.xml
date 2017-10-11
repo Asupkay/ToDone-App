@@ -5,6 +5,7 @@
 -->
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -39,7 +40,18 @@
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"/>
 
+    <TextView
+        android:id="@+id/due_date_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="10/17/2017"
+        style="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintBottom_toBottomOf="@id/due_date_label"
+        app:layout_constraintLeft_toRightOf="@id/due_date_label"
+        app:layout_constraintRight_toLeftOf="@+id/select_due_date_button"/>
+
     <Button
+        android:id="@+id/select_due_date_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintRight_toRightOf="parent"

@@ -32,6 +32,7 @@ public class TaskDbHelper extends SQLiteOpenHelper {
         final String CREATE_TABLE = "CREATE TABLE "  + TaskEntry.TABLE_NAME + " (" +
                 TaskEntry._ID                + " INTEGER PRIMARY KEY, " +
                 TaskEntry.COLUMN_DESCRIPTION + " TEXT NOT NULL, " +
+                TaskEntry.COLUMN_DUE_DATE    + " TEXT, " +
                 TaskEntry.COLUMN_PRIORITY    + " INTEGER NOT NULL);";
 
         db.execSQL(CREATE_TABLE);

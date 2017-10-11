@@ -12,6 +12,8 @@ import android.widget.TextView;
 
 import com.alexsupkay.todone.todone.data.TaskContract;
 
+import org.w3c.dom.Text;
+
 
 /**
  * This CustomCursorAdapter creates and binds ViewHolders, that hold the description and priority of a task,
@@ -62,6 +64,7 @@ public class CustomCursorAdapter extends RecyclerView.Adapter<CustomCursorAdapte
         // Indices for the _id, description, and priority columns
         int idIndex = mCursor.getColumnIndex(TaskContract.TaskEntry._ID);
         int descriptionIndex = mCursor.getColumnIndex(TaskContract.TaskEntry.COLUMN_DESCRIPTION);
+        int dueDateIndex = mCursor.getColumnIndex(TaskContract.TaskEntry.COLUMN_DUE_DATE);
         int priorityIndex = mCursor.getColumnIndex(TaskContract.TaskEntry.COLUMN_PRIORITY);
 
         mCursor.moveToPosition(position); // get to the right location in the cursor
@@ -69,10 +72,12 @@ public class CustomCursorAdapter extends RecyclerView.Adapter<CustomCursorAdapte
         // Determine the values of the wanted data
         final int id = mCursor.getInt(idIndex);
         String description = mCursor.getString(descriptionIndex);
+        String dueDate = mCursor.getString(dueDateIndex);
         int priority = mCursor.getInt(priorityIndex);
 
         //Set values
         holder.itemView.setTag(id);
+        holder.dueDateView.setText(dueDate);
         holder.taskDescriptionView.setText(description);
 
         // Programmatically set the text and color for the priority TextView
@@ -144,6 +149,7 @@ public class CustomCursorAdapter extends RecyclerView.Adapter<CustomCursorAdapte
 
         // Class variables for the task description and priority TextViews
         TextView taskDescriptionView;
+        TextView dueDateView;
         TextView priorityView;
 
         /**
@@ -155,6 +161,7 @@ public class CustomCursorAdapter extends RecyclerView.Adapter<CustomCursorAdapte
             super(itemView);
 
             taskDescriptionView = (TextView) itemView.findViewById(R.id.taskDescription);
+            dueDateView = (TextView) itemView.findViewById(R.id.dueDate);
             priorityView = (TextView) itemView.findViewById(R.id.priorityTextView);
         }
     }

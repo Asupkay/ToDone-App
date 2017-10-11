@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.alexsupkay.todone.todone.Fragments.DatePickerFragment;
@@ -19,6 +20,7 @@ public class AddTaskActivity extends AppCompatActivity {
 
     // Declare a member variable to keep track of a task's selected mPriority
     private int mPriority;
+    private TextView dueDateTV;
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +29,7 @@ public class AddTaskActivity extends AppCompatActivity {
 
         // Initialize to highest mPriority by default (mPriority = 1)
         ((RadioButton) findViewById(R.id.radButton1)).setChecked(true);
+        dueDateTV = (TextView) findViewById(R.id.due_date_text);
         mPriority = 1;
     }
 
@@ -70,11 +73,11 @@ public class AddTaskActivity extends AppCompatActivity {
     }
 
     public String getDateText() {
-        return "";
+        return (String) dueDateTV.getText();
     }
 
     public void setDateText(String date) {
-
+        dueDateTV.setText(date);
     }
 
 
